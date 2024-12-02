@@ -7,41 +7,41 @@ export default function PolicyModal() {
   const { theme } = useTheme();
 
   const privacyPolicyContent = `
-Last updated: [Date]
+Última atualização: [01/12/2024]
 
-1. Information We Collect
-We collect information that you provide directly to us when using the app, including [list specific data points].
+1. Informações que coletamos
+Coletamos informações que você nos fornece diretamente ao usar o aplicativo, incluindo [listar pontos de dados específicos].
 
-2. How We Use Your Information
-We use the collected information to:
-- Provide and maintain our services
-- Improve user experience
-- Send important notifications
+2. Como usamos suas informações
+Usamos as informações coletadas para:
+- Fornecer e manter nossos serviços
+- Melhorar a experiência do usuário
+- Envie notificações importantes
 
-3. Data Security
-We implement appropriate security measures to protect your personal information.
+3. Segurança de dados
+Implementamos medidas de segurança adequadas para proteger as suas informações pessoais.
 
-4. Contact Us
-If you have questions about this Privacy Policy, please contact us at [contact information].
+4. Contate-nos
+Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato conosco em [informações de contato]
 `;
 
   const termsContent = `
-Last updated: [Date]
+Última atualização: [01/12/2024]
 
-1. Acceptance of Terms
-By accessing and using this app, you accept and agree to be bound by these Terms and Conditions.
+1. Aceitação dos Termos
+Ao acessar e usar este aplicativo, você aceita e concorda em ficar vinculado a estes Termos e Condições.
 
-2. Use License
-Permission is granted to temporarily download one copy of the app for personal, non-commercial use only.
+2. Licença de uso
+É concedida permissão para baixar temporariamente uma cópia do aplicativo apenas para uso pessoal e não comercial.
 
-3. Disclaimer
-The app is provided "as is" without any warranties, express or implied.
+3. Isenção de responsabilidade
+O aplicativo é fornecido "como está", sem quaisquer garantias, expressas ou implícitas.
 
-4. Limitations
-In no event shall we be liable for any damages arising out of the use or inability to use the app.
+4. Limitações
+Em nenhum caso seremos responsáveis ​​por quaisquer danos decorrentes do uso ou incapacidade de uso do aplicativo.
 
-5. Changes to Terms
-We reserve the right to modify these terms at any time. Please review them periodically.
+5. Alterações nos Termos
+Reservamo-nos o direito de modificar estes termos a qualquer momento. Por favor, revise-os periodicamente.
 `;
 
   return (
