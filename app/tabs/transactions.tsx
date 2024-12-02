@@ -43,18 +43,18 @@ export default function Transactions() {
   const { currency } = useCurrency();
 
   const filters = [
-    { id: 'all', label: 'All' },
-    { id: 'income', label: 'Income' },
-    { id: 'expenses', label: 'Expenses' },
+    { id: 'tudo', label: 'Tudo' },
+    { id: 'renda', label: 'Renda' },
+    { id: 'despesas', label: 'Despesas' },
   ];
 
-  const [selectedType, setSelectedType] = useState<'all' | 'income' | 'expense'>('all');
+  const [selectedType, setSelectedType] = useState<'tudo' | 'renda' | 'despesas'>('tudo');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filteredTransactions = transactions.filter(transaction => {
-    if (selectedType !== 'all' && 
-        ((selectedType === 'income' && transaction.amount < 0) || 
-         (selectedType === 'expense' && transaction.amount > 0))) {
+    if (selectedType !== 'tudo' && 
+        ((selectedType === 'renda' && transaction.amount < 0) || 
+         (selectedType === 'despesas' && transaction.amount > 0))) {
       return false;
     }
     
@@ -65,26 +65,26 @@ export default function Transactions() {
     return true;
   });
 
-  const currentCategories = selectedType === 'income' ? incomeCategories : 
-                          selectedType === 'expense' ? expenseCategories :
+  const currentCategories = selectedType === 'renda' ? incomeCategories : 
+                          selectedType === 'despesas' ? expenseCategories :
                           [...new Set([...incomeCategories, ...expenseCategories])];
 
   const handleDelete = (id: string) => {
     Alert.alert(
-      "Delete Transaction",
-      "Are you sure you want to delete this transaction?",
+      "Deletar Transação",
+      "Tem certeza de que deseja excluir esta transação?",
       [
         {
-          text: "Cancel",
+          text: "Cancelar",
           style: "cancel"
         },
         { 
-          text: "Delete", 
+          text: "Deletar", 
           onPress: async () => {
             try {
               await deleteTransaction(id);
             } catch (error) {
-              Alert.alert('Error', 'Failed to delete transaction');
+              Alert.alert('Error', 'Falha ao excluir transação');
             }
           },
           style: "destructive"
@@ -121,7 +121,7 @@ export default function Transactions() {
           onPress={() => handleDelete(id)}
         >
           <Ionicons name="trash" size={24} color="#fff" />
-          <Text style={styles.actionText}>Delete</Text>
+          <Text style={styles.actionText}>Deletar</Text>
         </TouchableOpacity>
       </Animated.View>
     );
@@ -138,7 +138,7 @@ export default function Transactions() {
           {/* Balance Section */}
           <View style={styles.balanceContainer}>
             <Text style={[styles.balanceLabel, { color: theme.text.secondary }]}>
-              Total Balance
+              Saldo Total:
             </Text>
             <Text style={[styles.balanceAmount, { color: theme.text.primary }]}>
               {formatAmount(
@@ -153,7 +153,7 @@ export default function Transactions() {
             <View style={styles.statItem}>
               <View style={styles.statHeader}>
                 <View style={[styles.dot, { backgroundColor: '#4CAF50' }]} />
-                <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Income</Text>
+                <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Renda:</Text>
               </View>
               <Text style={[styles.statAmount, { color: '#4CAF50' }]}>
                 {formatAmount(
@@ -168,7 +168,7 @@ export default function Transactions() {
             <View style={styles.statItem}>
               <View style={styles.statHeader}>
                 <View style={[styles.dot, { backgroundColor: '#F44336' }]} />
-                <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Expenses</Text>
+                <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Despesas:</Text>
               </View>
               <Text style={[styles.statAmount, { color: '#F44336' }]}>
                 {formatAmount(
@@ -195,14 +195,14 @@ export default function Transactions() {
         {/* Filters */}
         <View style={styles.filtersWrapper}>
           <Text style={[styles.filterTitle, { color: theme.text.secondary }]}>
-            Transaction Type
+            Tipo de Transação
           </Text>
           <ScrollView 
             horizontal 
             showsHorizontalScrollIndicator={false}
             style={styles.transactionTypeFilter}
           >
-            {['all', 'income', 'expense'].map((type) => (
+            {['Tudo', 'Renda', 'Despesas'].map((type) => (
               <Pressable
                 key={type}
                 style={[
@@ -279,10 +279,10 @@ export default function Transactions() {
             <View style={styles.emptyContainer}>
               <MaterialCommunityIcons name="credit-card-off-outline" size={64} color={theme.text.secondary} />
               <Text style={[styles.emptyTitle, { color: theme.text.primary }]}>
-                No Transactions
+                Sem Transações
               </Text>
               <Text style={[styles.emptyText, { color: theme.text.secondary }]}>
-                Add your first transaction by tapping the + button
+              Adicione sua primeira transação tocando no botão +
               </Text>
             </View>
           }
