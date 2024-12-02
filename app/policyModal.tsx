@@ -1,6 +1,6 @@
-import { useLocalSearchParams } from "expo-router";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useTheme } from "../contexts/ThemeContext";
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function PolicyModal() {
   const { type } = useLocalSearchParams<{ type: string }>();
@@ -45,12 +45,13 @@ We reserve the right to modify these terms at any time. Please review them perio
 `;
 
   return (
-    <ScrollView
+    <ScrollView 
       style={[styles.container, { backgroundColor: theme.background }]}
-      contentInsetAdjustmentBehavior="automatic">
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <View style={styles.content}>
         <Text style={[styles.text, { color: theme.text.primary }]}>
-          {type === "privacy" ? privacyPolicyContent : termsContent}
+          {type === 'privacy' ? privacyPolicyContent : termsContent}
         </Text>
       </View>
     </ScrollView>
@@ -68,4 +69,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
-});
+}); 
