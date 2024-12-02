@@ -19,7 +19,7 @@ function StackNavigator() {
         }} 
       />
       <Stack.Screen 
-        name="(tabs)" 
+        name="tabs" 
         options={{ 
           headerShown: false 
         }} 
@@ -29,7 +29,7 @@ function StackNavigator() {
         options={{
           presentation: 'modal',
           headerShown: true,
-          headerTitle: 'Add Transaction',
+          headerTitle: 'Adicionar Transação',
           headerStyle: {
             backgroundColor: theme.surface,
           },
@@ -42,7 +42,7 @@ function StackNavigator() {
         options={{
           presentation: 'modal',
           headerShown: true,
-          headerTitle: 'Select Currency',
+          headerTitle: 'Selecione a moeda',
           headerStyle: {
             backgroundColor: theme.surface,
           },
