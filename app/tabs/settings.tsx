@@ -44,7 +44,7 @@ export default function Settings() {
     >
       {/* Preferences Section */}
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text.secondary }]}>Preferences</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text.secondary }]}>Preferencias</Text>
         <View style={[styles.sectionContent, { backgroundColor: theme.surface, borderColor: theme.border }]}>
           <SettingItem
             icon={{ name: 'moon', bg: '#607D8B' }}
@@ -86,7 +86,7 @@ export default function Settings() {
 
       {/* About Section */}
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.text.secondary }]}>About</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text.secondary }]}>Sobre</Text>
         <View style={[styles.sectionContent, { backgroundColor: theme.surface, borderColor: theme.border }]}>
           <SettingItem
             icon={{ name: 'information-circle', bg: '#607D8B' }}
