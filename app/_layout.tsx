@@ -1,67 +1,66 @@
-import { Stack } from 'expo-router';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { ThemeProvider } from '../contexts/ThemeContext';
-import { TransactionProvider } from '../contexts/TransactionContext';
-import { CurrencyProvider } from '../contexts/CurrencyContext';
-import { StyleSheet } from 'react-native';
-import { useTheme } from '../contexts/ThemeContext';
+import { Stack } from "expo-router";
+import { StyleSheet } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { CurrencyProvider } from "../contexts/CurrencyContext";
+import { ThemeProvider, useTheme } from "../contexts/ThemeContext";
+import { TransactionProvider } from "../contexts/TransactionContext";
 
 // Create a separate component for Stack configuration
 function StackNavigator() {
   const { theme } = useTheme();
-  
+
   return (
     <Stack>
-      <Stack.Screen 
-        name="splash" 
-        options={{ 
-          headerShown: false 
-        }} 
-      />
-      <Stack.Screen 
-        name="(tabs)" 
-        options={{ 
-          headerShown: false 
-        }} 
-      />
-      <Stack.Screen 
-        name="transactionForm" 
+      <Stack.Screen
+        name="splash"
         options={{
-          presentation: 'modal',
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="tabs"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="transactionForm"
+        options={{
+          presentation: "modal",
           headerShown: true,
-          headerTitle: 'Add Transaction',
+          headerTitle: "Add Transaction",
           headerStyle: {
             backgroundColor: theme.surface,
           },
           headerTintColor: theme.text.primary,
           headerShadowVisible: false,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="currencySelect" 
+      <Stack.Screen
+        name="currencySelect"
         options={{
-          presentation: 'modal',
+          presentation: "modal",
           headerShown: true,
-          headerTitle: 'Select Currency',
+          headerTitle: "Select Currency",
           headerStyle: {
             backgroundColor: theme.surface,
           },
           headerTintColor: theme.text.primary,
           headerShadowVisible: false,
-        }} 
+        }}
       />
-      <Stack.Screen 
-        name="policyModal" 
+      <Stack.Screen
+        name="policyModal"
         options={{
-          presentation: 'modal',
+          presentation: "modal",
           headerShown: true,
-          headerTitle: 'Privacy Policy',
+          headerTitle: "Privacy Policy",
           headerStyle: {
             backgroundColor: theme.surface,
           },
           headerTintColor: theme.text.primary,
           headerShadowVisible: false,
-        }} 
+        }}
       />
     </Stack>
   );

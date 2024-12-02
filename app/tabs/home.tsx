@@ -52,7 +52,7 @@ export default function Home() {
           {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
         </Text>
         <View style={styles.balanceContainer}>
-          <Text style={[styles.balanceLabel, { color: 'rgba(255,255,255,0.8)' }]}>Current Balance</Text>
+          <Text style={[styles.balanceLabel, { color: 'rgba(255,255,255,0.8)' }]}>Saldo Atual:</Text>
           <Text style={[styles.balanceAmount, { color: '#fff' }]}>
             {currency.symbol}{totals.balance.toFixed(2)}
           </Text>
@@ -63,14 +63,14 @@ export default function Home() {
       <View style={styles.statsRow}>
         <View style={[styles.statCard, { backgroundColor: theme.surface, shadowColor: theme.shadow || '#000000' }]}>
           <Ionicons name="arrow-up-circle" size={28} color="#4CAF50" />
-          <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Income</Text>
+          <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Renda:</Text>
           <Text style={[styles.statAmount, { color: theme.text.primary }]}>
             {currency.symbol}{totals.income.toFixed(2)}
           </Text>
         </View>
         <View style={[styles.statCard, { backgroundColor: theme.surface, shadowColor: theme.shadow || '#000000' }]}>
           <Ionicons name="arrow-down-circle" size={28} color="#F44336" />
-          <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Expenses</Text>
+          <Text style={[styles.statLabel, { color: theme.text.secondary }]}>Gastos</Text>
           <Text style={[styles.statAmount, { color: theme.text.primary }]}>
             {currency.symbol}{totals.expenses.toFixed(2)}
           </Text>
@@ -89,13 +89,13 @@ export default function Home() {
       >
         <View style={styles.addButtonContent}>
           <Ionicons name="add-circle" size={24} color="#fff" />
-          <Text style={styles.addButtonText}>Add Transaction</Text>
+          <Text style={styles.addButtonText}>Adicionar Transação</Text>
         </View>
       </TouchableOpacity>
 
       {/* Recent Transactions */}
       <View style={[styles.recentTransactions, { backgroundColor: theme.surface }]}>
-        <Text style={[styles.sectionTitle, { color: theme.text.primary }]}>Recent Transactions</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text.primary }]}>Transação Recente</Text>
         {recentTransactions.map((transaction) => (
           <TransactionItem
             key={transaction.id}
