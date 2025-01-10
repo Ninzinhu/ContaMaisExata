@@ -3,7 +3,7 @@ export const expenseCategories = [
   'Compras',
   'Transporte',
   'Casa',
-  'Entretenimento',
+  'Entreterimento',
   'Assistência médica',
   'Educação',
   'Utilidades',
