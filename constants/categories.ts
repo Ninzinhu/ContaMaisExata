@@ -16,24 +16,24 @@ export const expenseCategories = [
 ];
 
 export const incomeCategories = [
-  'Salary',
-  'Business',
-  'Investments',
+  'Salário',
+  'Negócios',
+  'Investimentos',
   'Freelance',
-  'Gifts',
-  'Rental',
-  'Refunds',
-  'Other'
+  'Presentes',
+  'Aluguel',
+  'Reembolsos',
+  'Outros'
 ];
 
-// Helper function to get categories based on transaction type
-export const getCategoriesByType = (type: 'income' | 'expense' | 'all') => {
+//Função auxiliar para obter categorias com base no tipo de transação
+export const getCategoriesByType = (type: 'renda' | 'despesa' | 'tudo') => {
   switch (type) {
-    case 'income':
+    case 'renda':
       return incomeCategories;
-    case 'expense':
+    case 'despesa':
       return expenseCategories;
-    case 'all':
+    case 'tudo':
       return [...new Set([...incomeCategories, ...expenseCategories])];
     default:
       return [];
