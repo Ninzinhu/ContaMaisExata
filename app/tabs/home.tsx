@@ -14,7 +14,7 @@ export default function Home() {
   const { currency } = useCurrency();
   const router = useRouter();
 
-  // Calculate totals
+  // Calcula os totais
   const totals = transactions.reduce(
     (acc, transaction) => {
       if (transaction.amount > 0) {
@@ -28,7 +28,7 @@ export default function Home() {
     { balance: 0, income: 0, expenses: 0 }
   );
 
-  // Get recent transactions
+  // Obtenha transações recentes
   const recentTransactions = transactions
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 5);
@@ -89,7 +89,7 @@ export default function Home() {
       >
         <View style={styles.addButtonContent}>
           <Ionicons name="add-circle" size={24} color="#fff" />
-          <Text style={styles.addButtonText}>Add Transaction</Text>
+          <Text style={styles.addButtonText}>Adicionar Transações</Text>
         </View>
       </TouchableOpacity>
 
