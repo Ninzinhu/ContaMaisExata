@@ -24,7 +24,7 @@ export default function Settings() {
       
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <Text style={[styles.sectionTitle, { color: theme.text.primary }]}>
-          Currency
+          Moedas
         </Text>
         <ScrollView 
           horizontal 
