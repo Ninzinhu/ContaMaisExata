@@ -9,11 +9,11 @@ import { Ionicons } from '@expo/vector-icons';
 import RecurringTransactionSettings from '../components/RecurringTransactionSettings';
 
 const expenseCategories = [
-  'Food', 'Transport', 'Entertainment', 'Shopping', 'Bills', 'Other'
+  'Comida', 'Transporte', 'Entretenimento', 'Compras', 'Contas', 'Outros'
 ];
 
 const incomeCategories = [
-  'Salary', 'Freelance', 'Investment', 'Gift', 'Other'
+  'Salário', 'Freelance', 'Investimentos', 'Presentes', 'Outros'
 ];
 
 const TRANSACTION_COLORS = {
@@ -49,17 +49,17 @@ export default function TransactionForm() {
 
   const [title, setTitle] = useState(existingTransaction?.title || '');
   const [amount, setAmount] = useState(existingTransaction ? Math.abs(existingTransaction.amount).toString() : '');
-  const [category, setCategory] = useState(existingTransaction?.category || 'Other');
+  const [category, setCategory] = useState(existingTransaction?.category || 'Outro');
   const [date, setDate] = useState(existingTransaction ? new Date(existingTransaction.date) : new Date());
   const [isRecurring, setIsRecurring] = useState(existingTransaction?.isRecurring || false);
-  const [recurringType, setRecurringType] = useState<'daily' | 'weekly' | 'monthly' | 'yearly' | undefined>(
+  const [recurringType, setRecurringType] = useState<'dia' | 'semana' | 'mês' | 'ano' | undefined>(
     existingTransaction?.recurringType
   );
   const [recurringEndDate, setRecurringEndDate] = useState<string | null>(
     existingTransaction?.recurringEndDate || null
   );
-  const [transactionType, setTransactionType] = useState<'expense' | 'income'>(
-    existingTransaction ? (existingTransaction.amount < 0 ? 'expense' : 'income') : 'expense'
+  const [transactionType, setTransactionType] = useState<'despesa' | 'renda'>(
+    existingTransaction ? (existingTransaction.amount < 0 ? 'despesa' : 'renda') : 'despesa'
   );
 
   const isEditMode = !!params.transactionId;
@@ -84,7 +84,7 @@ export default function TransactionForm() {
     try {
       const transactionData = {
         title,
-        amount: parseFloat(amount) * (transactionType === 'expense' ? -1 : 1),
+        amount: parseFloat(amount) * (transactionType === 'despesa' ? -1 : 1),
         date: date.toISOString().split('T')[0],
         category,
         isRecurring,
@@ -127,20 +127,20 @@ export default function TransactionForm() {
             style={[
               styles.typeButton,
               { 
-                backgroundColor: transactionType === 'expense' 
+                backgroundColor: transactionType === 'despesa' 
                   ? TRANSACTION_COLORS.expense.active 
                   : TRANSACTION_COLORS.expense.inactive,
                 
-                transform: [{ scale: transactionType === 'expense' ? 1 : 0.95 }]
+                transform: [{ scale: transactionType === 'despesa' ? 1 : 0.95 }]
               }
             ]}
-            onPress={() => setTransactionType('expense')}
+            onPress={() => setTransactionType('despesa')}
           >
             <View style={styles.typeContent}>
               <Ionicons 
                 name="arrow-down-circle" 
                 size={32}  // Increased size
-                color={transactionType === 'expense' 
+                color={transactionType === 'despesa' 
                   ? TRANSACTION_COLORS.expense.text.active 
                   : TRANSACTION_COLORS.expense.text.inactive
                 } 
@@ -148,13 +148,13 @@ export default function TransactionForm() {
               <Text style={[
                 styles.typeText,
                 { 
-                  color: transactionType === 'expense' 
+                  color: transactionType === 'despesa' 
                     ? TRANSACTION_COLORS.expense.text.active 
                     : TRANSACTION_COLORS.expense.text.inactive,
-                  fontWeight: transactionType === 'expense' ? '700' : '500'
+                  fontWeight: transactionType === 'despesa' ? '700' : '500'
                 }
               ]}>
-                Expense
+                Despesas
               </Text>
             </View>
           </Pressable>
@@ -163,21 +163,21 @@ export default function TransactionForm() {
             style={[
               styles.typeButton,
               { 
-                backgroundColor: transactionType === 'income' 
+                backgroundColor: transactionType === 'renda' 
                   ? TRANSACTION_COLORS.income.active 
                   : TRANSACTION_COLORS.income.inactive,
-                borderColor: transactionType === 'income' 
+                borderColor: transactionType === 'renda' 
                   ? TRANSACTION_COLORS.income.active 
                   : theme.border,
-                transform: [{ scale: transactionType === 'income' ? 1 : 0.98 }]
+                transform: [{ scale: transactionType === 'renda' ? 1 : 0.98 }]
               }
             ]}
-            onPress={() => setTransactionType('income')}
+            onPress={() => setTransactionType('renda')}
           >
             <Ionicons 
               name="arrow-up-circle" 
               size={24} 
-              color={transactionType === 'income' 
+              color={transactionType === 'renda' 
                 ? TRANSACTION_COLORS.income.text.active 
                 : TRANSACTION_COLORS.income.text.inactive
               } 
@@ -186,13 +186,13 @@ export default function TransactionForm() {
             <Text style={[
               styles.typeText,
               { 
-                color: transactionType === 'income' 
+                color: transactionType === 'renda' 
                   ? TRANSACTION_COLORS.income.text.active 
                   : TRANSACTION_COLORS.income.text.inactive,
-                fontWeight: transactionType === 'income' ? '600' : '400'
+                fontWeight: transactionType === 'renda' ? '600' : '400'
               }
             ]}>
-              Income
+              Renda
             </Text>
           </Pressable>
         </View>
@@ -201,7 +201,7 @@ export default function TransactionForm() {
           styles.inputContainer,
           { 
             backgroundColor: theme.surface,
-            borderColor: transactionType === 'expense' 
+            borderColor: transactionType === 'despesa' 
               ? TRANSACTION_COLORS.expense.active 
               : TRANSACTION_COLORS.income.active,
           }
@@ -255,7 +255,7 @@ export default function TransactionForm() {
           showsHorizontalScrollIndicator={false}
           style={styles.categoryContainer}
         >
-          {(transactionType === 'expense' ? expenseCategories : incomeCategories).map((cat) => (
+          {(transactionType === 'despesa' ? expenseCategories : incomeCategories).map((cat) => (
             <Pressable
               key={cat}
               style={[
