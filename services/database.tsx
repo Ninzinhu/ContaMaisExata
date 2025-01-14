@@ -1,8 +1,10 @@
 import * as SQLite from 'expo-sqlite';
-import { Platform } from 'react-native';
 
 // Open/create the database
 const db = SQLite.openDatabaseSync('budgetn.db');
+
+
+
 
 // Types
 export interface Transaction {
@@ -12,7 +14,7 @@ export interface Transaction {
   date: string;
   category: string;
   isRecurring?: boolean;
-  recurringType?: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  recurringType?: 'dia' | 'semana' | 'mês' | 'ano';
   recurringEndDate?: string | null;
 }
 
