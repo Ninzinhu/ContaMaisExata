@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { initDatabase, getTransactions, addTransaction, updateTransaction, deleteTransaction, Transaction } from '../services/database';
+import { initDatabase, getTransactions, addTransaction, updateTransaction, deleteTransaction, Transaction } from '../services/UserDatabase';
 
 interface TransactionContextType {
   transactions: Transaction[];
