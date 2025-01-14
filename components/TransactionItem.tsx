@@ -11,7 +11,7 @@ interface TransactionItemProps {
   date: string;
   category: string;
   isRecurring?: boolean;
-  recurringType?: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  recurringType?: 'dia' | 'semana' | 'mês' | 'ano';
   recurringEndDate?: string | null;
   isSwipeActive?: boolean;
   onPress?: () => void;
