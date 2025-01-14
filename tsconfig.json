@@ -13,5 +13,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/tabs/LoginScreen.jsx", "app/tabs/RegisterScreen.jsx"  ]
+, "app/tabs/Login.jsx", 
+"app/tabs/Register.jsx"  ]
 }
