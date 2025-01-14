@@ -6,18 +6,18 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 interface RecurringTransactionSettingsProps {
   isRecurring: boolean;
-  recurringType: 'daily' | 'weekly' | 'monthly' | 'yearly' | undefined;
+  recurringType: 'dia' | 'semana' | 'mês' | 'ano' | undefined;
   recurringEndDate: string | undefined | null;
   onRecurringChange: (value: boolean) => void;
-  onRecurringTypeChange: (type: 'daily' | 'weekly' | 'monthly' | 'yearly') => void;
+  onRecurringTypeChange: (type: 'dia' | 'semana' | 'mês' | 'ano') => void;
   onEndDateChange: (date: string | null) => void;
 }
 
 const recurringOptions = [
-  { id: 'daily', label: 'Daily', icon: 'calendar' },
-  { id: 'weekly', label: 'Weekly', icon: 'calendar-outline' },
-  { id: 'monthly', label: 'Monthly', icon: 'calendar-clear' },
-  { id: 'yearly', label: 'Yearly', icon: 'calendar-number' },
+  { id: 'dia', label: 'Dia', icon: 'calendar' },
+  { id: 'semana', label: 'Semana', icon: 'calendar-outline' },
+  { id: 'mês', label: 'Mês', icon: 'calendar-clear' },
+  { id: 'ano', label: 'Ano', icon: 'calendar-number' },
 ];
 
 export default function RecurringTransactionSettings({
@@ -35,7 +35,7 @@ export default function RecurringTransactionSettings({
     <View style={styles.container}>
       <View style={[styles.switchContainer, { backgroundColor: theme.surface }]}>
         <Text style={[styles.label, { color: theme.text.primary }]}>
-          Recurring Transaction
+        Transação recorrente
         </Text>
         <Pressable
           style={[
@@ -99,7 +99,7 @@ export default function RecurringTransactionSettings({
             onPress={() => setShowDatePicker(true)}
           >
             <Text style={[styles.label, { color: theme.text.primary }]}>
-              End Date (Optional)
+              Data (Opicional)
             </Text>
             <Text style={[styles.dateText, { color: theme.text.secondary }]}>
               {recurringEndDate 
